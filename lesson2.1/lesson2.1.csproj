@@ -43,13 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bar.cs" />
+    <Compile Include="Data.cs" />
     <Compile Include="Hall.cs" />
     <Compile Include="Kitchen.cs" />
     <Compile Include="Gender.cs" />
     <Compile Include="Human.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Restoraunt.cs" />
+    <Compile Include="Restaurant.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

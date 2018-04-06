@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lesson2._1
 {
-    class Restoraunt
+    class Restaurant
     {
         public string Name { get; set; } 
         
@@ -19,6 +19,8 @@ namespace lesson2._1
 
         public List<Hall> Halls { get; set; }
         public Bar Bar { get; set; }
+        
+        
     }
 
 }

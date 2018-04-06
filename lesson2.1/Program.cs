@@ -11,6 +11,8 @@ namespace lesson2._1
         static void Main(string[] args)
         {
 
+            //string s = Data.RandStr();
+            Console.ReadLine();
         }
     }
 }
