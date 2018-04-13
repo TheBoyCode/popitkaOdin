@@ -11,7 +11,10 @@ namespace lesson2._1
         static void Main(string[] args)
         {
 
-            //string s = Data.RandStr();
+            Restaurant r = new Restaurant();
+            r = Data.RandRestaurant();
+
+
             Console.ReadLine();
         }
     }
