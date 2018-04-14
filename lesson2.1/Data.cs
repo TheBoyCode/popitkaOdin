@@ -94,16 +94,7 @@ namespace lesson2._1
                buffRestaurant.Owner = Ow;
             }//LIST of Human Owner
 
-            ///////////////////////////////////////////////////
-            //for (int i = 0; i < n; i++)
-            //{
-            //    Console.WriteLine(buffRestaurant.Owner[i].Age);
-            //    Console.WriteLine(buffRestaurant.Owner[i].Sex);
-            //    Console.WriteLine(buffRestaurant.Owner[i].Name);
-            //    Console.WriteLine(buffRestaurant.Owner[i].Id);
-            //}
-            ////////////////////////////////////////////////////
-           // Console.WriteLine("//////////////////////////////////////////");
+          
 
             Kitchen kitchen = new Kitchen();
             Random ranCircl_Kitchen = new Random();
@@ -119,23 +110,11 @@ namespace lesson2._1
                 Cooker.Add(humanK);
                 kitchen.Cook = Cooker;
                 buffRestaurant.Kitchen = kitchen;
-                //Console.WriteLine(buffRestaurant.Kitchen.Cook[i].Sex);
-                //Console.WriteLine(buffRestaurant.Kitchen.Cook[i].Age);
-                //Console.WriteLine(buffRestaurant.Kitchen.Cook[i].Name);
-                //Console.WriteLine(buffRestaurant.Kitchen.Cook[i].Id);
-
+                
 
             }  //kitchen
 
-            ////////////////////////////////////////////////////
-            //for (int i = 0; i < k; i++)
-            //{
-            //    Console.WriteLine(buffRestaurant.Kitchen.Cookers[i].Age);
-            //    Console.WriteLine(buffRestaurant.Kitchen.Cookers[i].Id);
-            //    Console.WriteLine(buffRestaurant.Kitchen.Cookers[i].Name);
-            //    Console.WriteLine(buffRestaurant.Kitchen.Cookers[i].Sex);
-            //}
-            //////////////////////////////////////////////////
+            
             List<Hall> hall = new List<Hall>();
 
           
@@ -180,31 +159,12 @@ namespace lesson2._1
                     hallBuff.Administrators.Add(AdminHuman);
 
                 }
-                //hallBuff.Administrators = admin;
-                //hallBuff.Staff = staff;
-              //  hall.Add(hallBuff);
+                
                 buffRestaurant.Halls.Add(hallBuff);
                 
                
             }
-            //buffRestaurant.Halls = hall;
-            //////////////////////////////////////////
-            //Console.WriteLine("///////////////////////////////");
-            //for (int y = 0; y < h; y++)
-            //{
-            //    Console.WriteLine(buffRestaurant.Halls[y].Number);
-            //    for (int p = 0, f = 0; p < buffRestaurant.Halls[y].Staff.Count + buffRestaurant.Halls[y].Administrators.Count; f++, p++)
-            //    {
-
-            //        if (p < buffRestaurant.Halls[y].Staff.Count)
-            //            Console.WriteLine(buffRestaurant.Halls[y].Staff[p].Name);
-
-
-
-            //        //if (f < buffRestaurant.Halls[y].Administrators.Count)
-            //        //    Console.WriteLine(buffRestaurant.Halls[y].Administrators[f].Name);
-            //    }
-            //}
+            
             buffRestaurant.Bar = AutoCompBar();
 
             return buffRestaurant;
@@ -240,9 +200,7 @@ namespace lesson2._1
                 letter = abc[buff];//рандомна буква
                 str += letter;
             }
-            ///////////
-           // Console.WriteLine(str);
-            /////////////
+            
             return str;
         }   //Random TIME
         public static string RandStr(int rand)
