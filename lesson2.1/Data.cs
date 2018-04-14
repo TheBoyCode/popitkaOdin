@@ -10,18 +10,77 @@ namespace lesson2._1
     {
         public static Random randId = new Random();
         public static List<Restaurant> Restaurants { get; set; }
-       
-        //static void randomFilling(List<Restaurant> restaurants)
-        //{
-        //    Restaurant restaurantBuff = new Restaurant();
 
-        //}
+        public static void randomFilling()
+        {
+            int countOfRest = randId.Next(1,5);
+            Restaurants = new List<Restaurant>();
+            for(int i=0;i<countOfRest;i++)
+            {
+                Restaurants.Add(RandRestaurant());
+            }
+        }
+
+        public static void ShowListOfRestaurant()
+        {
+            for(int i=0;i<Restaurants.Count;i++)
+            {
+                
+                Console.WriteLine("\n\tName: "+Restaurants[i].Name);
+                Console.WriteLine("\tAdress: " + Restaurants[i].Adress);
+                Console.Write("\tOwner: ");
+                for (int j=0;j<Restaurants[i].Owner.Count;j++)
+                {
+                    Console.Write("\n\t   "+Restaurants[i].Owner[j].Name);
+                    Console.Write(" (Age: " + Restaurants[i].Owner[j].Age);
+                    Console.Write(" Genger: " + Restaurants[i].Owner[j].Sex);
+                    Console.Write(" Id: " + Restaurants[i].Owner[j].Id+")");
+                }
+                Console.WriteLine("\n\tHalls: ");
+                for(int j=0; j<Restaurants[i].Halls.Count;j++)
+                {
+                    Console.WriteLine("\t   Number: " + Restaurants[i].Halls[j].Number);
+                    Console.WriteLine("\t   Count of  staff: " + Restaurants[i].Halls[j].Staff.Count);
+                    Console.WriteLine("\t   Staf: ");
+                    for(int h=0;h<Restaurants[i].Halls[j].Staff.Count;h++)
+                    {
+                        Console.Write("\t\t   " + Restaurants[i].Halls[j].Staff[h].Name);
+                        Console.Write(" (Age: " + Restaurants[i].Halls[j].Staff[h].Age);
+                        Console.Write(" Genger: " + Restaurants[i].Halls[j].Staff[h].Sex);
+                        Console.Write(" Id: " + Restaurants[i].Halls[j].Staff[h].Id + ")\n");
+                    }
+                }
+
+                Console.WriteLine("\tKitchen: ");
+                Console.WriteLine("\t   Cook:");
+                for(int j=0;j<Restaurants[i].Kitchen.Cook.Count;j++)
+                {
+                    Console.Write("\t\t   " + Restaurants[i].Kitchen.Cook[j].Name);
+                    Console.Write(" (Age: " + Restaurants[i].Kitchen.Cook[j].Age);
+                    Console.Write(" Genger: " + Restaurants[i].Kitchen.Cook[j].Sex);
+                    Console.Write(" Id: " + Restaurants[i].Kitchen.Cook[j].Id + ")\n");
+                }
+
+                Console.WriteLine("\tBar: ");
+                Console.WriteLine("\t   Barmens: ");
+                for (int j=0;j<Restaurants[i].Bar.Barmens.Count;j++)
+                {
+                    Console.Write("\t\t   " + Restaurants[i].Bar.Barmens[j].Name);
+                    Console.Write(" (Age: " + Restaurants[i].Bar.Barmens[j].Age);
+                    Console.Write(" Genger: " + Restaurants[i].Bar.Barmens[j].Sex);
+                    Console.Write(" Id: " + Restaurants[i].Bar.Barmens[j].Id + ")\n");
+                }
+                Console.Write("\n\n-------------------------------------------------------------------------" +
+                    "-------");
+            }
+        }
+
         public static  Restaurant RandRestaurant()
         {
             
             Restaurant buffRestaurant = new Restaurant();
             buffRestaurant.Name = RandStr();
-            buffRestaurant.Adress = randId.Next(1,200).ToString() +" "+ RandStr();
+            buffRestaurant.Adress = randId.Next(1,200).ToString() +" "+ RandStr(8);
            
           
             List<Human> Ow = new List<Human>();
@@ -36,15 +95,15 @@ namespace lesson2._1
             }//LIST of Human Owner
 
             ///////////////////////////////////////////////////
-            for (int i = 0; i < n; i++)
-            {
-                Console.WriteLine(buffRestaurant.Owner[i].Age);
-                Console.WriteLine(buffRestaurant.Owner[i].Sex);
-                Console.WriteLine(buffRestaurant.Owner[i].Name);
-                Console.WriteLine(buffRestaurant.Owner[i].Id);
-            }
+            //for (int i = 0; i < n; i++)
+            //{
+            //    Console.WriteLine(buffRestaurant.Owner[i].Age);
+            //    Console.WriteLine(buffRestaurant.Owner[i].Sex);
+            //    Console.WriteLine(buffRestaurant.Owner[i].Name);
+            //    Console.WriteLine(buffRestaurant.Owner[i].Id);
+            //}
             ////////////////////////////////////////////////////
-            Console.WriteLine("//////////////////////////////////////////");
+           // Console.WriteLine("//////////////////////////////////////////");
 
             Kitchen kitchen = new Kitchen();
             Random ranCircl_Kitchen = new Random();
@@ -58,24 +117,24 @@ namespace lesson2._1
                 humanK = AutoCompleteHuman();
 
                 Cooker.Add(humanK);
-                kitchen.Cookers = Cooker;
+                kitchen.Cook = Cooker;
                 buffRestaurant.Kitchen = kitchen;
-                //Console.WriteLine(buffRestaurant.Kitchen.Cookers[i].Sex);
-                //Console.WriteLine(buffRestaurant.Kitchen.Cookers[i].Age);
-                //Console.WriteLine(buffRestaurant.Kitchen.Cookers[i].Name);
-                //Console.WriteLine(buffRestaurant.Kitchen.Cookers[i].Id);
+                //Console.WriteLine(buffRestaurant.Kitchen.Cook[i].Sex);
+                //Console.WriteLine(buffRestaurant.Kitchen.Cook[i].Age);
+                //Console.WriteLine(buffRestaurant.Kitchen.Cook[i].Name);
+                //Console.WriteLine(buffRestaurant.Kitchen.Cook[i].Id);
 
-                
+
             }  //kitchen
 
             ////////////////////////////////////////////////////
-            for (int i = 0; i < k; i++)
-            {
-                Console.WriteLine(buffRestaurant.Kitchen.Cookers[i].Age);
-                Console.WriteLine(buffRestaurant.Kitchen.Cookers[i].Id);
-                Console.WriteLine(buffRestaurant.Kitchen.Cookers[i].Name);
-                Console.WriteLine(buffRestaurant.Kitchen.Cookers[i].Sex);
-            }
+            //for (int i = 0; i < k; i++)
+            //{
+            //    Console.WriteLine(buffRestaurant.Kitchen.Cookers[i].Age);
+            //    Console.WriteLine(buffRestaurant.Kitchen.Cookers[i].Id);
+            //    Console.WriteLine(buffRestaurant.Kitchen.Cookers[i].Name);
+            //    Console.WriteLine(buffRestaurant.Kitchen.Cookers[i].Sex);
+            //}
             //////////////////////////////////////////////////
             List<Hall> hall = new List<Hall>();
 
@@ -97,7 +156,7 @@ namespace lesson2._1
 
                 hallBuff.Number = i + 1;
                 //count of staff
-                rnStaff = randId.Next(1,10);
+                rnStaff = randId.Next(1,20);
 
                
                 
@@ -112,7 +171,7 @@ namespace lesson2._1
 
                 //count of staff
                
-                rnAdmin = randId.Next(1,10);
+                rnAdmin = randId.Next(1,5);
                 for (int j = 0; j < rnAdmin; j++)
                 {
                     
@@ -127,30 +186,43 @@ namespace lesson2._1
                 buffRestaurant.Halls.Add(hallBuff);
                 
                
-            } 
+            }
             //buffRestaurant.Halls = hall;
             //////////////////////////////////////////
-            Console.WriteLine("///////////////////////////////");
-            for (int y = 0; y < h; y++)
-            {
-                Console.WriteLine(buffRestaurant.Halls[y].Number);
-                for (int p = 0, f = 0; p < buffRestaurant.Halls[y].Staff.Count + buffRestaurant.Halls[y].Administrators.Count; f++, p++)
-                {
+            //Console.WriteLine("///////////////////////////////");
+            //for (int y = 0; y < h; y++)
+            //{
+            //    Console.WriteLine(buffRestaurant.Halls[y].Number);
+            //    for (int p = 0, f = 0; p < buffRestaurant.Halls[y].Staff.Count + buffRestaurant.Halls[y].Administrators.Count; f++, p++)
+            //    {
 
-                    if (p < buffRestaurant.Halls[y].Staff.Count)
-                        Console.WriteLine(buffRestaurant.Halls[y].Staff[p].Name);
+            //        if (p < buffRestaurant.Halls[y].Staff.Count)
+            //            Console.WriteLine(buffRestaurant.Halls[y].Staff[p].Name);
 
 
 
-                    //if (f < buffRestaurant.Halls[y].Administrators.Count)
-                    //    Console.WriteLine(buffRestaurant.Halls[y].Administrators[f].Name);
-                }
-            }
-
+            //        //if (f < buffRestaurant.Halls[y].Administrators.Count)
+            //        //    Console.WriteLine(buffRestaurant.Halls[y].Administrators[f].Name);
+            //    }
+            //}
+            buffRestaurant.Bar = AutoCompBar();
 
             return buffRestaurant;
         }
 
+        public static Bar AutoCompBar()
+        {
+            Bar bar = new Bar();
+            bar.Barmens = new List<Human>();
+            int countOfBarmens = randId.Next(1, 5);
+            for(int i=0;i<countOfBarmens;i++)
+            {
+                bar.Barmens.Add(AutoCompleteHuman());
+                //Console.WriteLine(bar.Barmens[i].Id);
+
+            }
+            return bar;
+        }
 
         public static string RandStr()
         {

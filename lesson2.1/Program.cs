@@ -11,9 +11,8 @@ namespace lesson2._1
         static void Main(string[] args)
         {
 
-            Restaurant r = new Restaurant();
-            r = Data.RandRestaurant();
-
+            Data.randomFilling();
+            Data.ShowListOfRestaurant();
 
             Console.ReadLine();
         }
