@@ -83,13 +83,13 @@ namespace lesson2._1
                     "-------");
             }
         }
-
+        static Random rn = new Random();
         public static  Restaurant RandRestaurant()
         {
             
             Restaurant buffRestaurant = new Restaurant();
             buffRestaurant.Name = RandStr();
-            buffRestaurant.Adress = randId.Next(1,200).ToString() +" "+ RandStr(8);
+            buffRestaurant.Adress = randId.Next(1,200).ToString() +" "+ RandStr(rn.Next());
            
           
             List<Human> Ow = new List<Human>();
