@@ -49,6 +49,15 @@ namespace lesson2._1
                         Console.Write(" Genger: " + Restaurants[i].Halls[j].Staff[h].Sex);
                         Console.Write(" Id: " + Restaurants[i].Halls[j].Staff[h].Id + ")\n");
                     }
+                    Console.WriteLine("\t   Count of  Admins: " + Restaurants[i].Halls[j].Administrators.Count);
+                    Console.WriteLine("\t   Admins: ");
+                    for (int h = 0; h < Restaurants[i].Halls[j].Administrators.Count; h++)
+                    {
+                        Console.Write("\t\t   " + Restaurants[i].Halls[j].Administrators[h].Name);
+                        Console.Write(" (Age: " + Restaurants[i].Halls[j].Administrators[h].Age);
+                        Console.Write(" Genger: " + Restaurants[i].Halls[j].Administrators[h].Sex);
+                        Console.Write(" Id: " + Restaurants[i].Halls[j].Administrators[h].Id + ")\n");
+                    }
                 }
 
                 Console.WriteLine("\tKitchen: ");
