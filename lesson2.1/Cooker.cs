@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace lesson2._1
 {
-    class Owner:Human
+    class Cooker:Human
     {
-      
-      public int CountOfProperty { get; set; }
+        public int Experience { get; set; }
     }
 }

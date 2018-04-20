@@ -36,10 +36,10 @@ namespace lesson2._1
                 Console.Write("\tOwner: ");
                 for (int j=0;j<Restaurants[i].Owners.Count;j++)
                 {
-                    Console.Write("\n\t   "+Restaurants[i].Owners[j].proprietor.Name);
-                    Console.Write(" (Age: " + Restaurants[i].Owners[j].proprietor.Age);
-                    Console.Write(" Genger: " + Restaurants[i].Owners[j].proprietor.Sex);
-                    Console.Write(" Id: " + Restaurants[i].Owners[j].proprietor.Id+")");
+                    Console.Write("\n\t   "+Restaurants[i].Owners[j].Name);
+                    Console.Write(" (Age: " + Restaurants[i].Owners[j].Age);
+                    Console.Write(" Genger: " + Restaurants[i].Owners[j].Sex);
+                    Console.Write(" Id: " + Restaurants[i].Owners[j].Id+")");
                 }
                 Console.WriteLine("\n\tHalls: ");
                 for(int j=0; j<Restaurants[i].Halls.Count;j++)
@@ -76,13 +76,14 @@ namespace lesson2._1
                 }
 
                 Console.WriteLine("\tKitchen: ");
-                Console.WriteLine("\t   Cook:");
-                for(int j=0;j<Restaurants[i].Kitchen.Cook.Count;j++)
+                Console.WriteLine("\t   Cookers:");
+                for(int j=0;j<Restaurants[i].Kitchen.Cookers.Count;j++)
                 {
-                    Console.Write("\t\t   " + Restaurants[i].Kitchen.Cook[j].Name);
-                    Console.Write(" (Age: " + Restaurants[i].Kitchen.Cook[j].Age);
-                    Console.Write(" Genger: " + Restaurants[i].Kitchen.Cook[j].Sex);
-                    Console.Write(" Id: " + Restaurants[i].Kitchen.Cook[j].Id + ")\n");
+                    Console.Write("\t\t   " + Restaurants[i].Kitchen.Cookers[j].Name);
+                    Console.Write(" (Age: " + Restaurants[i].Kitchen.Cookers[j].Age);
+                    Console.Write(" Genger: " + Restaurants[i].Kitchen.Cookers[j].Sex);
+                    Console.Write(" \n\t\t   Expperience: " + Restaurants[i].Kitchen.Cookers[j].Experience);
+                    Console.Write(" Id: " + Restaurants[i].Kitchen.Cookers[j].Id + ")\n");
                 }
 
                 Console.WriteLine("\tBar: ");
@@ -109,41 +110,41 @@ namespace lesson2._1
 
             
 
-            List<Owner> owner = new List<Owner>();
+            List<Owner> owners = new List<Owner>();
             
            // List<Human> Ow = new List<Human>();
             int n = randId.Next(1, 10);//Count of Owner
             for (int i = 0; i < n; i++)
             {
-                Human human = new Human();
-               Owner ownerObj = new Owner();
-                human = AutoCompleteHuman();
-                ownerObj.proprietor = human;
-                ownerObj.CountOfProperty = randId.Next(1, 5);
-                owner.Add(ownerObj);
-              
+                
+                Owner owner = new Owner();
+                owner.Age = randId.Next(1, 100);
+                owner.CountOfProperty = randId.Next(1, 100);
+                owner.Id = randId.Next(100000, 1000000).ToString();
+                owner.Name = RandStr();
+                owner.Sex = (Gender)randId.Next(0, 2);
+                owners.Add(owner);
             }//LIST of Human Owner
-            buffRestaurant.Owners = owner;
+            buffRestaurant.Owners = owners;
           
 
             Kitchen kitchen = new Kitchen();
             Random ranCircl_Kitchen = new Random();
-            List<Human> Cooker = new List<Human>();
+            List<Cooker> Cooker = new List<Cooker>();
 
             int k = ranCircl_Kitchen.Next(1, 10);
             for (int i = 0; i < k; i++)
             {
-                Human humanK = new Human();
-                
-                humanK = AutoCompleteHuman();
-
-                Cooker.Add(humanK);
-                kitchen.Cook = Cooker;
-                buffRestaurant.Kitchen = kitchen;
-                
-
+                Cooker cooker = new Cooker();
+                cooker.Age = randId.Next(1, 100);
+                cooker.Experience = randId.Next(1, 50);
+                cooker.Id = randId.Next(100000, 1000000).ToString();
+                cooker.Name = RandStr();
+                cooker.Sex = (Gender)randId.Next(0, 2);
+                Cooker.Add(cooker);
             }  //kitchen
-
+            kitchen.Cookers = Cooker;
+            buffRestaurant.Kitchen=kitchen;
             
             List<Hall> hall = new List<Hall>();
 

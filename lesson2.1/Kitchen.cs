@@ -8,7 +8,7 @@ namespace lesson2._1
 {
     class Kitchen
     {
-        public List<Human> Cook { get; set; }
+        public List<Cooker> Cookers { get; set; }
         
     }
 }
