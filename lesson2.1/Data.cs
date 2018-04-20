@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 
 namespace lesson2._1
-{
-
-    //поставити вар
-    //зробити клас овнер офіціант повар 
-    //повиносити з циклів оптимізувати . обєкти рандом
+{    
    static class Data
     {
         public static Random randId = new Random();
@@ -30,7 +26,6 @@ namespace lesson2._1
         {
             for(int i=0;i<Restaurants.Count;i++)
             {
-                
                 Console.WriteLine("\n\tName: "+Restaurants[i].Name);
                 Console.WriteLine("\tAdress: " + Restaurants[i].Adress);
                 Console.Write("\tOwner: ");
@@ -95,7 +90,6 @@ namespace lesson2._1
                     Console.Write(" Genger: " + Restaurants[i].Bar.Barmens[j].Sex);
                     Console.Write(" Id: " + Restaurants[i].Bar.Barmens[j].Id + ")\n");
                 }
-                
                 Console.Write("\n\n-------------------------------------------------------------------------" +
                     "-------");
             }
@@ -103,21 +97,14 @@ namespace lesson2._1
         static Random rn = new Random();
         public static  Restaurant RandRestaurant()
         {
-            
-            Restaurant buffRestaurant = new Restaurant();
+            var buffRestaurant = new Restaurant();
             buffRestaurant.Name = RandStr();
-            buffRestaurant.Adress = randId.Next(1,200).ToString() +" "+ RandStr(rn.Next());
-
-            
-
-            List<Owner> owners = new List<Owner>();
-            
-           // List<Human> Ow = new List<Human>();
+            buffRestaurant.Adress = randId.Next(1,200).ToString() +" "+ RandStr();
+            var owners = new List<Owner>();
             int n = randId.Next(1, 10);//Count of Owner
             for (int i = 0; i < n; i++)
             {
-                
-                Owner owner = new Owner();
+                var owner = new Owner();
                 owner.Age = randId.Next(1, 100);
                 owner.CountOfProperty = randId.Next(1, 100);
                 owner.Id = randId.Next(100000, 1000000).ToString();
@@ -126,12 +113,10 @@ namespace lesson2._1
                 owners.Add(owner);
             }//LIST of Human Owner
             buffRestaurant.Owners = owners;
-          
 
-            Kitchen kitchen = new Kitchen();
-            Random ranCircl_Kitchen = new Random();
-            List<Cooker> Cooker = new List<Cooker>();
-
+            var kitchen = new Kitchen();
+            var ranCircl_Kitchen = new Random();
+            var Cooker = new List<Cooker>();
             int k = ranCircl_Kitchen.Next(1, 10);
             for (int i = 0; i < k; i++)
             {
@@ -146,30 +131,22 @@ namespace lesson2._1
             kitchen.Cookers = Cooker;
             buffRestaurant.Kitchen=kitchen;
             
-            List<Hall> hall = new List<Hall>();
-
-          
-            List<Human> staff = new List<Human>();
-            List<Human> admin = new List<Human>();
+            var hall = new List<Hall>();
+            var staff = new List<Human>();
+            var admin = new List<Human>();
             int rnStaff;
-            
             int rnAdmin;
-            
             buffRestaurant.Halls = new List<Hall>();
-           
-            int h = randId.Next(1, 5);//count of halls
+            int h = randId.Next(1, 5);
             for (int i = 0; i < h; i++)
             {
-               Hall hallBuff = new Hall();
+                var hallBuff = new Hall();
                 hallBuff.Staff = new List<Human>();
                 hallBuff.Administrators = new List<Human>();
-
                 hallBuff.Number = i + 1;
-                //count of staff
                 rnStaff = randId.Next(1,20);
-
                 int countOfWaiters = randId.Next(1, 10);
-                List<Waiter> waiters = new List<Waiter>();
+                var waiters = new List<Waiter>();
                 for (int j = 0; j < countOfWaiters; j++)
                 {
                     Waiter waiter = new Waiter();
@@ -183,101 +160,47 @@ namespace lesson2._1
 
                 hallBuff.Waiters = waiters;
                 for (int j=0;j< rnStaff;j++)
-                {
-                    
+                {  
                     Human StaffHuman = new Human();
                     StaffHuman = AutoCompleteHuman();
                     hallBuff.Staff.Add(StaffHuman);
-             
                 }
-
-                //count of staff
-               
                 rnAdmin = randId.Next(1,5);
                 for (int j = 0; j < rnAdmin; j++)
                 {
-                    
                     Human AdminHuman = new Human();
                     AdminHuman = AutoCompleteHuman();
                     hallBuff.Administrators.Add(AdminHuman);
-
                 }
-                
                 buffRestaurant.Halls.Add(hallBuff);
-                
-               
             }
-            
             buffRestaurant.Bar = AutoCompBar();
-
             return buffRestaurant;
         }
 
         public static Bar AutoCompBar()
         {
-            Bar bar = new Bar();
+            var bar = new Bar();
             bar.Barmens = new List<Human>();
             int countOfBarmens = randId.Next(1, 5);
             for(int i=0;i<countOfBarmens;i++)
             {
                 bar.Barmens.Add(AutoCompleteHuman());
-                //Console.WriteLine(bar.Barmens[i].Id);
-
             }
             return bar;
         }
 
         public static string RandStr()
         {
-            //string str="";
-            //int countOfLetter;
-            //char letter;
-            //string abc = "qwertyuiopasdfghjklzxcvbnm";
-            //Random randCountOfLetter = new Random();
-            
-            //countOfLetter = randCountOfLetter.Next(3, 10);//число букв в слові
-            //for(int i=0;i<countOfLetter;i++)
-            //{
-            //    Random randLetter = new Random(countOfLetter+i);
-            //    int buff = randLetter.Next(0, 25);
-            //    letter = abc[buff];//рандомна буква
-            //    str += letter;
-            //}
-            
             return Path.GetRandomFileName();
-        }   //Random TIME
-        public static string RandStr(int rand)
-        {
-            //string str = "";
-            //int countOfLetter;
-            //char letter;
-            //string abc = "qwertyuiopasdfghjklzxcvbnm";
-            //Random randCountOfLetter = new Random(rand);
-
-            //countOfLetter = randCountOfLetter.Next(3, 10);//число букв в слові
-            //for (int i = 0; i < countOfLetter; i++)
-            //{
-            //    Random randLetter = new Random(countOfLetter*i+i+rand);
-            //    int buff = randLetter.Next(0, 25);
-            //    letter = abc[buff];//рандомна буква
-            //    str += letter;
-            //}
-            return Path.GetRandomFileName();
-            ///////////
-            // Console.WriteLine(str);
-            /////////////
-           // return str;
-        } //Random NUMBER
-        
+        }  
         public static Human AutoCompleteHuman()
         {
             Human hum = new Human();
-           
             hum.Sex = (Gender)randId.Next(0, 2);
-            hum.Name = RandStr(randId.Next());
+            hum.Name = RandStr();
             hum.Id = randId.Next(100000, 1000000).ToString();
             hum.Age = randId.Next(1, 100);
-
             return hum;
         }
     }
