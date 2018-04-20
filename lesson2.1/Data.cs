@@ -54,6 +54,16 @@ namespace lesson2._1
                         Console.Write(" Genger: " + Restaurants[i].Halls[j].Staff[h].Sex);
                         Console.Write(" Id: " + Restaurants[i].Halls[j].Staff[h].Id + ")\n");
                     }
+                    Console.WriteLine("\t   Count of  waiters: " + Restaurants[i].Halls[j].Waiters.Count);
+                    Console.WriteLine("\t   Waiters: ");
+                    for (int h = 0; h < Restaurants[i].Halls[j].Waiters.Count; h++)
+                    {
+                        Console.Write("\t\t   " + Restaurants[i].Halls[j].Waiters[h].Name);
+                        Console.Write(" (Age: " + Restaurants[i].Halls[j].Waiters[h].Age);
+                        Console.Write(" Genger: " + Restaurants[i].Halls[j].Waiters[h].Sex);
+                        Console.Write(" \n\t\t   Speed of express: " + Restaurants[i].Halls[j].Waiters[h].speedOfExpress);
+                        Console.Write(" Id: " + Restaurants[i].Halls[j].Waiters[h].Id + ")\n");
+                    }
                     Console.WriteLine("\t   Count of  Admins: " + Restaurants[i].Halls[j].Administrators.Count);
                     Console.WriteLine("\t   Admins: ");
                     for (int h = 0; h < Restaurants[i].Halls[j].Administrators.Count; h++)
@@ -84,6 +94,7 @@ namespace lesson2._1
                     Console.Write(" Genger: " + Restaurants[i].Bar.Barmens[j].Sex);
                     Console.Write(" Id: " + Restaurants[i].Bar.Barmens[j].Id + ")\n");
                 }
+                
                 Console.Write("\n\n-------------------------------------------------------------------------" +
                     "-------");
             }
@@ -95,6 +106,8 @@ namespace lesson2._1
             Restaurant buffRestaurant = new Restaurant();
             buffRestaurant.Name = RandStr();
             buffRestaurant.Adress = randId.Next(1,200).ToString() +" "+ RandStr(rn.Next());
+
+            
 
             List<Owner> owner = new List<Owner>();
             
@@ -154,8 +167,20 @@ namespace lesson2._1
                 //count of staff
                 rnStaff = randId.Next(1,20);
 
-               
-                
+                int countOfWaiters = randId.Next(1, 10);
+                List<Waiter> waiters = new List<Waiter>();
+                for (int j = 0; j < countOfWaiters; j++)
+                {
+                    Waiter waiter = new Waiter();
+                    waiter.Age = randId.Next(1, 100);
+                    waiter.Id = randId.Next(100000, 1000000).ToString();
+                    waiter.Name = RandStr();
+                    waiter.Sex = (Gender)randId.Next(0, 2);
+                    waiter.speedOfExpress = randId.Next(1, 100);
+                    waiters.Add(waiter);
+                }
+
+                hallBuff.Waiters = waiters;
                 for (int j=0;j< rnStaff;j++)
                 {
                     
