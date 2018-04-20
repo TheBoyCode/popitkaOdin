@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace lesson2._1
 {
+
+    //поставити вар
+    //зробити клас овнер офіціант повар 
+    //повиносити з циклів оптимізувати . обєкти рандом
    static class Data
     {
         public static Random randId = new Random();
@@ -29,12 +34,12 @@ namespace lesson2._1
                 Console.WriteLine("\n\tName: "+Restaurants[i].Name);
                 Console.WriteLine("\tAdress: " + Restaurants[i].Adress);
                 Console.Write("\tOwner: ");
-                for (int j=0;j<Restaurants[i].Owner.Count;j++)
+                for (int j=0;j<Restaurants[i].Owners.Count;j++)
                 {
-                    Console.Write("\n\t   "+Restaurants[i].Owner[j].Name);
-                    Console.Write(" (Age: " + Restaurants[i].Owner[j].Age);
-                    Console.Write(" Genger: " + Restaurants[i].Owner[j].Sex);
-                    Console.Write(" Id: " + Restaurants[i].Owner[j].Id+")");
+                    Console.Write("\n\t   "+Restaurants[i].Owners[j].proprietor.Name);
+                    Console.Write(" (Age: " + Restaurants[i].Owners[j].proprietor.Age);
+                    Console.Write(" Genger: " + Restaurants[i].Owners[j].proprietor.Sex);
+                    Console.Write(" Id: " + Restaurants[i].Owners[j].proprietor.Id+")");
                 }
                 Console.WriteLine("\n\tHalls: ");
                 for(int j=0; j<Restaurants[i].Halls.Count;j++)
@@ -90,19 +95,22 @@ namespace lesson2._1
             Restaurant buffRestaurant = new Restaurant();
             buffRestaurant.Name = RandStr();
             buffRestaurant.Adress = randId.Next(1,200).ToString() +" "+ RandStr(rn.Next());
-           
-          
-            List<Human> Ow = new List<Human>();
+
+            List<Owner> owner = new List<Owner>();
+            
+           // List<Human> Ow = new List<Human>();
             int n = randId.Next(1, 10);//Count of Owner
             for (int i = 0; i < n; i++)
             {
-               Human human = new Human();
-               
-               human = AutoCompleteHuman();
-               Ow.Add(human);
-               buffRestaurant.Owner = Ow;
+                Human human = new Human();
+               Owner ownerObj = new Owner();
+                human = AutoCompleteHuman();
+                ownerObj.proprietor = human;
+                ownerObj.CountOfProperty = randId.Next(1, 5);
+                owner.Add(ownerObj);
+              
             }//LIST of Human Owner
-
+            buffRestaurant.Owners = owner;
           
 
             Kitchen kitchen = new Kitchen();
@@ -195,43 +203,44 @@ namespace lesson2._1
 
         public static string RandStr()
         {
-            string str="";
-            int countOfLetter;
-            char letter;
-            string abc = "qwertyuiopasdfghjklzxcvbnm";
-            Random randCountOfLetter = new Random();
+            //string str="";
+            //int countOfLetter;
+            //char letter;
+            //string abc = "qwertyuiopasdfghjklzxcvbnm";
+            //Random randCountOfLetter = new Random();
             
-            countOfLetter = randCountOfLetter.Next(3, 10);//число букв в слові
-            for(int i=0;i<countOfLetter;i++)
-            {
-                Random randLetter = new Random(countOfLetter+i);
-                int buff = randLetter.Next(0, 25);
-                letter = abc[buff];//рандомна буква
-                str += letter;
-            }
+            //countOfLetter = randCountOfLetter.Next(3, 10);//число букв в слові
+            //for(int i=0;i<countOfLetter;i++)
+            //{
+            //    Random randLetter = new Random(countOfLetter+i);
+            //    int buff = randLetter.Next(0, 25);
+            //    letter = abc[buff];//рандомна буква
+            //    str += letter;
+            //}
             
-            return str;
+            return Path.GetRandomFileName();
         }   //Random TIME
         public static string RandStr(int rand)
         {
-            string str = "";
-            int countOfLetter;
-            char letter;
-            string abc = "qwertyuiopasdfghjklzxcvbnm";
-            Random randCountOfLetter = new Random(rand);
+            //string str = "";
+            //int countOfLetter;
+            //char letter;
+            //string abc = "qwertyuiopasdfghjklzxcvbnm";
+            //Random randCountOfLetter = new Random(rand);
 
-            countOfLetter = randCountOfLetter.Next(3, 10);//число букв в слові
-            for (int i = 0; i < countOfLetter; i++)
-            {
-                Random randLetter = new Random(countOfLetter*i+i+rand);
-                int buff = randLetter.Next(0, 25);
-                letter = abc[buff];//рандомна буква
-                str += letter;
-            }
+            //countOfLetter = randCountOfLetter.Next(3, 10);//число букв в слові
+            //for (int i = 0; i < countOfLetter; i++)
+            //{
+            //    Random randLetter = new Random(countOfLetter*i+i+rand);
+            //    int buff = randLetter.Next(0, 25);
+            //    letter = abc[buff];//рандомна буква
+            //    str += letter;
+            //}
+            return Path.GetRandomFileName();
             ///////////
             // Console.WriteLine(str);
             /////////////
-            return str;
+           // return str;
         } //Random NUMBER
         
         public static Human AutoCompleteHuman()
