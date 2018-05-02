@@ -8,10 +8,10 @@ namespace lesson2._1
 {
     class Hall
     {
-        public List<Human> Staff { get; set; } 
+        public List<Staff> Staffs { get; set; } 
         public List<Waiter> Waiters { get; set; }
-        public List<Human> Administrators { get; set; }
+        public List<Admin> Administrators { get; set; }
         public int Number { get; set; }
-
+        public string Id { get; set; }
     }
 }

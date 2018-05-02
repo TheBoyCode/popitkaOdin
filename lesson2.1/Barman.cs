@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace lesson2._1
 {
-    class Bar
+    class Barman:Human
     {
-        public List<Barman> Barmens { get; set; }
-        public string Id { get; set; }
+        public int KnowledgeCocktails { get; set; }
     }
 }

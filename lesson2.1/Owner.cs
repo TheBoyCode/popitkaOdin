@@ -8,7 +8,6 @@ namespace lesson2._1
 {
     class Owner:Human
     {
-      
       public int CountOfProperty { get; set; }
     }
 }

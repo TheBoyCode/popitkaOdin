@@ -17,10 +17,10 @@ namespace lesson2._1
         //  public List<Human> Owner { get; set; }
         public List<Owner> Owners { get; set; }
         public Kitchen Kitchen { get; set; }
-
+        public string Id { get; set; }
         public List<Hall> Halls { get; set; }
         public Bar Bar { get; set; }
-        
+        public Menu Menu { get; set; }
         
     }
 

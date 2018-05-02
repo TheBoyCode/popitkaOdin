@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace lesson2._1
 {
-    class Bar
+    class Menu
     {
-        public List<Barman> Barmens { get; set; }
-        public string Id { get; set; }
+       public List<Dish> Dishes { get; set; }
+       public List<Drink> Drinks { get; set; }
+       public string Id { get; set; }
     }
 }

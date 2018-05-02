@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace lesson2._1
 {
-    class Bar
+    class Dish
     {
-        public List<Barman> Barmens { get; set; }
+        public string Name { get; set; }
+        public int Weight { get; set; }
+        public float Price { get; set; }
         public string Id { get; set; }
     }
 }

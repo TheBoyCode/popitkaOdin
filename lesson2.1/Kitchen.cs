@@ -9,6 +9,6 @@ namespace lesson2._1
     class Kitchen
     {
         public List<Cooker> Cookers { get; set; }
-        
+        public string Id { get; set; }
     }
 }
